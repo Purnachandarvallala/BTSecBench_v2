@@ -269,11 +269,10 @@ WaNet
 
 
 
-&#x20;       │
 
 
 
-&#x20;       ▼
+       ▼
 
 
 
@@ -281,11 +280,10 @@ STRIP Detection
 
 
 
-&#x20;       │
 
 
 
-&#x20;       ▼
+       ▼
 
 
 
@@ -293,11 +291,10 @@ Fine-Tuning Defense
 
 
 
-&#x20;       │
 
 
 
-&#x20;       ▼
+       ▼
 
 
 
@@ -305,11 +302,10 @@ Benchmark Generation
 
 
 
-&#x20;       │
 
 
 
-&#x20;       ▼
+       ▼
 
 
 
