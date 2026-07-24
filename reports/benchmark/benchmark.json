@@ -1,0 +1,52 @@
+[
+    {
+        "Component":"BadNets",
+        "Metric":"Attack Success Rate",
+        "Value":33.28
+    },
+    {
+        "Component":"STRIP",
+        "Metric":"Detection Accuracy",
+        "Value":0.5660545779
+    },
+    {
+        "Component":"STRIP",
+        "Metric":"Precision",
+        "Value":0.5388131275
+    },
+    {
+        "Component":"STRIP",
+        "Metric":"Recall",
+        "Value":0.9169854629
+    },
+    {
+        "Component":"STRIP",
+        "Metric":"F1 Score",
+        "Value":0.6787804418
+    },
+    {
+        "Component":"STRIP",
+        "Metric":"AUC",
+        "Value":0.5278460413
+    },
+    {
+        "Component":"STRIP",
+        "Metric":"False Positive Rate",
+        "Value":0.7848763071
+    },
+    {
+        "Component":"STRIP",
+        "Metric":"False Negative Rate",
+        "Value":0.0830145371
+    },
+    {
+        "Component":"Fine-Tuning",
+        "Metric":"Precision",
+        "Value":99.87
+    },
+    {
+        "Component":"Fine-Tuning",
+        "Metric":"Recall",
+        "Value":99.93
+    }
+]

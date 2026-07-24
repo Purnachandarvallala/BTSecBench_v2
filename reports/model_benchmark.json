@@ -1,0 +1,50 @@
+[
+    {
+        "Model": "cnn",
+        "Input": "(4, 3, 64, 64)",
+        "Output": "(4, 43)",
+        "Parameters": "2,509,099",
+        "Trainable": "2,509,099",
+        "Size(MB)": "9.58",
+        "Inference(ms)": "10.04",
+        "Images/s": "398.29",
+        "Device": "CPU",
+        "Status": "PASS"
+    },
+    {
+        "Model": "resnet18",
+        "Input": "(4, 3, 64, 64)",
+        "Output": "(4, 43)",
+        "Parameters": "11,198,571",
+        "Trainable": "11,198,571",
+        "Size(MB)": "42.76",
+        "Inference(ms)": "23.69",
+        "Images/s": "168.88",
+        "Device": "CPU",
+        "Status": "PASS"
+    },
+    {
+        "Model": "mobilenet_v3",
+        "Input": "(4, 3, 64, 64)",
+        "Output": "(4, 43)",
+        "Parameters": "4,257,115",
+        "Trainable": "4,257,115",
+        "Size(MB)": "16.33",
+        "Inference(ms)": "15.91",
+        "Images/s": "251.37",
+        "Device": "CPU",
+        "Status": "PASS"
+    },
+    {
+        "Model": "efficientnet_b0",
+        "Input": "(4, 3, 64, 64)",
+        "Output": "(4, 43)",
+        "Parameters": "4,062,631",
+        "Trainable": "4,062,631",
+        "Size(MB)": "15.66",
+        "Inference(ms)": "22.66",
+        "Images/s": "176.50",
+        "Device": "CPU",
+        "Status": "PASS"
+    }
+]

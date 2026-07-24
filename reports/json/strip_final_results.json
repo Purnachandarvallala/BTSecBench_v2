@@ -1,0 +1,25 @@
+{
+    "model": "efficientnet_b0",
+    "attack": "badnets",
+    "checkpoint": "checkpoints/best_model.pth",
+    "perturbations": 20,
+    "alpha": 0.5,
+    "threshold": 0.8741620779037476,
+    "accuracy": 0.5660545779137975,
+    "precision": 0.5388131275288476,
+    "recall": 0.9169854628921194,
+    "f1": 0.6787804417594865,
+    "false_positive_rate": 0.7848763070645244,
+    "false_negative_rate": 0.08301453710788065,
+    "auc": 0.5278460413102669,
+    "confusion_matrix": [
+        [
+            1687,
+            6155
+        ],
+        [
+            651,
+            7191
+        ]
+    ]
+}

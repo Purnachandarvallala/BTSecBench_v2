@@ -1,0 +1,75 @@
+project:
+  name: BTSecBench_v2
+  seed: 42
+  output_dir: reports
+
+dataset:
+  name: GTSRB
+
+  root: data/raw/GTSRB
+
+  train_dir: Final_Training/Images
+
+  test_dir: Final_Test/Images
+
+  test_csv: GT-final_test.csv
+
+  num_classes: 43
+
+  image_size: 64
+
+  train_split: 0.8
+
+  val_split: 0.2
+
+training:
+  batch_size: 64
+
+  epochs: 40
+
+  workers: 4
+
+  pin_memory: true
+
+  persistent_workers: true
+
+  prefetch_factor: 2
+
+optimizer:
+  name: AdamW
+
+  lr: 0.001
+
+  weight_decay: 0.0001
+
+scheduler:
+  name: CosineAnnealingLR
+
+attacks:
+
+  fgsm:
+    epsilon: 8/255
+
+  bim:
+    epsilon: 8/255
+    alpha: 2/255
+    steps: 10
+
+  pgd:
+    epsilon: 8/255
+    alpha: 2/255
+    steps: 10
+
+  rfgsm:
+    epsilon: 8/255
+    alpha: 2/255
+
+logging:
+
+  save_every: 1
+
+  tensorboard: true
+
+  mlflow: false
+
+  wandb: false

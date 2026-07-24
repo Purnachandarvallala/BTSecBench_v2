@@ -1,0 +1,11 @@
+{
+    "dataset": "GTSRB",
+    "created": "2026-06-28 23:33:12",
+    "num_classes": 43,
+    "image_size": 64,
+    "train_samples": 31367,
+    "validation_samples": 7842,
+    "test_samples": 12630,
+    "total_samples": 51839,
+    "image_extension": ".ppm"
+}

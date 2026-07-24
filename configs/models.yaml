@@ -1,0 +1,25 @@
+model:
+
+  name: cnn          # cnn | resnet18 | mobilenet_v3 | efficientnet_b0
+
+  num_classes: 43
+
+  pretrained: true
+
+  freeze_backbone: false
+
+cnn:
+
+  dropout: 0.30
+
+resnet18:
+
+  hidden_dim: 512
+
+mobilenet_v3:
+
+  hidden_dim: 1024
+
+efficientnet_b0:
+
+  hidden_dim: 1280

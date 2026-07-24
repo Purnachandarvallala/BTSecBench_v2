@@ -1,0 +1,2 @@
+defense,model,epochs,learning_rate,checkpoint,validation_accuracy,validation_loss,precision,recall,f1_score,balanced_accuracy,mcc,samples,validation_time
+Fine-Tuning,efficientnet_b0,5,1e-05,reports\fine_tuning\defended_model.pth,99.94,0.004,99.87,99.93,99.9,99.93,0.9993,7842,23.56

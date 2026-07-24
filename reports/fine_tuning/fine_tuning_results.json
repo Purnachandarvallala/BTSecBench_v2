@@ -1,0 +1,16 @@
+{
+    "defense": "Fine-Tuning",
+    "model": "efficientnet_b0",
+    "epochs": 5,
+    "learning_rate": 1e-05,
+    "checkpoint": "reports\\fine_tuning\\defended_model.pth",
+    "validation_accuracy": 99.94,
+    "validation_loss": 0.004,
+    "precision": 99.87,
+    "recall": 99.93,
+    "f1_score": 99.9,
+    "balanced_accuracy": 99.93,
+    "mcc": 0.9993,
+    "samples": 7842,
+    "validation_time": 23.56
+}

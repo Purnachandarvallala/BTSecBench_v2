@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="860" viewBox="0 0 1280 860" role="img" aria-labelledby="title desc">
+  <title id="title">Backdoor Attack Pipeline</title>
+  <desc id="desc">System workflow showing dataset preparation, attack injection, model training, evaluation, and artifact export for BTSecBench_v2 backdoor experiments.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #111827; }
+      .subtitle { font: 400 15px Arial, sans-serif; fill: #475569; }
+      .box-title { font: 700 16px Arial, sans-serif; fill: #111827; }
+      .box-text { font: 400 13px Arial, sans-serif; fill: #334155; }
+      .lane { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; }
+      .setup { fill: #eef6ff; stroke: #3b82f6; }
+      .data { fill: #ecfdf5; stroke: #10b981; }
+      .attack { fill: #fff7ed; stroke: #f97316; }
+      .model { fill: #f5f3ff; stroke: #8b5cf6; }
+      .output { fill: #f8fafc; stroke: #64748b; }
+      .node { stroke-width: 2; rx: 10; }
+      .decision { fill: #fff7ed; stroke: #f97316; stroke-width: 2; }
+      .line { fill: none; stroke: #334155; stroke-width: 2; marker-end: url(#arrow); }
+      .label { font: 700 13px Arial, sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="860" fill="#ffffff"/>
+  <text x="48" y="54" class="title">Backdoor Attack Pipeline</text>
+  <text x="48" y="82" class="subtitle">BTSecBench_v2 workflow for poisoning data, training or loading a model, and measuring attack success.</text>
+
+  <rect x="40" y="120" width="240" height="660" class="lane"/>
+  <rect x="300" y="120" width="240" height="660" class="lane"/>
+  <rect x="560" y="120" width="240" height="660" class="lane"/>
+  <rect x="820" y="120" width="200" height="660" class="lane"/>
+  <rect x="1040" y="120" width="200" height="660" class="lane"/>
+
+  <text x="64" y="150" class="label">Setup</text>
+  <text x="324" y="150" class="label">Data Layer</text>
+  <text x="584" y="150" class="label">Attack Injection</text>
+  <text x="844" y="150" class="label">Model & Engine</text>
+  <text x="1064" y="150" class="label">Evaluation Output</text>
+
+  <rect x="70" y="180" width="180" height="74" class="node setup"/>
+  <text x="92" y="208" class="box-title">Start Experiment</text>
+  <text x="92" y="232" class="box-text">CLI script or notebook</text>
+
+  <rect x="70" y="300" width="180" height="94" class="node setup"/>
+  <text x="92" y="328" class="box-title">Load Settings</text>
+  <text x="92" y="352" class="box-text">attack, target class</text>
+  <text x="92" y="372" class="box-text">poison rate, model</text>
+
+  <rect x="330" y="180" width="180" height="94" class="node data"/>
+  <text x="352" y="208" class="box-title">Load Split CSVs</text>
+  <text x="352" y="232" class="box-text">train.csv</text>
+  <text x="352" y="252" class="box-text">val.csv</text>
+
+  <rect x="330" y="320" width="180" height="94" class="node data"/>
+  <text x="352" y="348" class="box-title">Create Dataset</text>
+  <text x="352" y="372" class="box-text">GTSRBDataset</text>
+  <text x="352" y="392" class="box-text">image, label, path</text>
+
+  <rect x="330" y="460" width="180" height="94" class="node data"/>
+  <text x="352" y="488" class="box-title">Apply Transforms</text>
+  <text x="352" y="512" class="box-text">train / val / test</text>
+  <text x="352" y="532" class="box-text">Albumentations</text>
+
+  <rect x="590" y="180" width="180" height="94" class="node attack"/>
+  <text x="612" y="208" class="box-title">Attack Factory</text>
+  <text x="612" y="232" class="box-text">get_attack()</text>
+  <text x="612" y="252" class="box-text">registry lookup</text>
+
+  <rect x="590" y="320" width="180" height="94" class="node attack"/>
+  <text x="612" y="348" class="box-title">Attack Object</text>
+  <text x="612" y="372" class="box-text">BadNets, Blend</text>
+  <text x="612" y="392" class="box-text">SIG, WaNet</text>
+
+  <rect x="590" y="460" width="180" height="94" class="node attack"/>
+  <text x="612" y="488" class="box-title">PoisonedDataset</text>
+  <text x="612" y="512" class="box-text">wrap clean dataset</text>
+  <text x="612" y="532" class="box-text">on-the-fly poisoning</text>
+
+  <polygon points="680,600 760,650 680,700 600,650" class="decision"/>
+  <text x="633" y="648" class="box-title">Poison</text>
+  <text x="633" y="668" class="box-title">sample?</text>
+
+  <rect x="830" y="180" width="180" height="94" class="node model"/>
+  <text x="852" y="208" class="box-title">Build Model</text>
+  <text x="852" y="232" class="box-text">get_model()</text>
+  <text x="852" y="252" class="box-text">CNN / transfer model</text>
+
+  <rect x="830" y="340" width="180" height="94" class="node model"/>
+  <text x="852" y="368" class="box-title">Train or Load</text>
+  <text x="852" y="392" class="box-text">Trainer</text>
+  <text x="852" y="412" class="box-text">checkpoint</text>
+
+  <rect x="830" y="500" width="180" height="94" class="node model"/>
+  <text x="852" y="528" class="box-title">Evaluate Model</text>
+  <text x="852" y="552" class="box-text">clean accuracy</text>
+  <text x="852" y="572" class="box-text">triggered inputs</text>
+
+  <rect x="1070" y="280" width="140" height="94" class="node output"/>
+  <text x="1092" y="308" class="box-title">Metrics</text>
+  <text x="1092" y="332" class="box-text">accuracy, F1</text>
+  <text x="1092" y="352" class="box-text">ASR</text>
+
+  <rect x="1070" y="460" width="140" height="114" class="node output"/>
+  <text x="1092" y="488" class="box-title">Artifacts</text>
+  <text x="1092" y="512" class="box-text">JSON / CSV</text>
+  <text x="1092" y="532" class="box-text">figures</text>
+  <text x="1092" y="552" class="box-text">checkpoints</text>
+
+  <path d="M160 254 L160 300" class="line"/>
+  <path d="M250 347 L330 227" class="line"/>
+  <path d="M420 274 L420 320" class="line"/>
+  <path d="M420 414 L420 460" class="line"/>
+  <path d="M250 347 L590 227" class="line"/>
+  <path d="M680 274 L680 320" class="line"/>
+  <path d="M680 414 L680 460" class="line"/>
+  <path d="M510 507 L590 507" class="line"/>
+  <path d="M680 554 L680 600" class="line"/>
+  <path d="M760 650 L830 227" class="line"/>
+  <path d="M760 650 L830 387" class="line"/>
+  <path d="M920 274 L920 340" class="line"/>
+  <path d="M920 434 L920 500" class="line"/>
+  <path d="M1010 547 L1070 327" class="line"/>
+  <path d="M1140 374 L1140 460" class="line"/>
+
+  <text x="773" y="638" class="label">yes: trigger + relabel</text>
+  <text x="592" y="722" class="label">no: keep clean label</text>
+</svg>

@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Conda
+.env
+.venv
+
+# VSCode
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models
+checkpoints/
+*.pth
+*.pt
+
+# Reports
+reports/*.png
+reports/*.pdf
+reports/*.csv
+reports/*.xlsx
+reports/*.html
+
+# Logs
+logs/*.log
+
+# MLFlow
+mlruns/
+
+# WandB
+wandb/
+
+# Dataset
+data/raw/
+data/processed/
+
+# Temporary
+*.tmp
+*.bak

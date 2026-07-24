@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="920" viewBox="0 0 1280 920" role="img" aria-labelledby="title desc">
+  <title id="title">STRIP Detection Workflow</title>
+  <desc id="desc">System workflow showing how BTSecBench_v2 performs STRIP backdoor detection using perturbations, entropy scores, threshold optimization, and exported metrics.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #111827; }
+      .subtitle { font: 400 15px Arial, sans-serif; fill: #475569; }
+      .box-title { font: 700 16px Arial, sans-serif; fill: #111827; }
+      .box-text { font: 400 13px Arial, sans-serif; fill: #334155; }
+      .lane { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; }
+      .setup { fill: #eef6ff; stroke: #3b82f6; }
+      .data { fill: #ecfdf5; stroke: #10b981; }
+      .detect { fill: #fff7ed; stroke: #f97316; }
+      .model { fill: #f5f3ff; stroke: #8b5cf6; }
+      .output { fill: #f8fafc; stroke: #64748b; }
+      .node { stroke-width: 2; rx: 10; }
+      .line { fill: none; stroke: #334155; stroke-width: 2; marker-end: url(#arrow); }
+      .label { font: 700 13px Arial, sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="920" fill="#ffffff"/>
+  <text x="48" y="54" class="title">STRIP Detection Workflow</text>
+  <text x="48" y="82" class="subtitle">Runtime detector workflow for identifying poisoned inputs through prediction stability under perturbation.</text>
+
+  <rect x="40" y="120" width="220" height="720" class="lane"/>
+  <rect x="280" y="120" width="260" height="720" class="lane"/>
+  <rect x="560" y="120" width="260" height="720" class="lane"/>
+  <rect x="840" y="120" width="180" height="720" class="lane"/>
+  <rect x="1040" y="120" width="200" height="720" class="lane"/>
+
+  <text x="64" y="150" class="label">Setup</text>
+  <text x="304" y="150" class="label">Dataset Construction</text>
+  <text x="584" y="150" class="label">STRIP Scoring</text>
+  <text x="864" y="150" class="label">Model</text>
+  <text x="1064" y="150" class="label">Detection Output</text>
+
+  <rect x="70" y="180" width="160" height="74" class="node setup"/>
+  <text x="92" y="208" class="box-title">Start STRIP</text>
+  <text x="92" y="232" class="box-text">defenses/strip.py</text>
+
+  <rect x="70" y="300" width="160" height="114" class="node setup"/>
+  <text x="92" y="328" class="box-title">Load Settings</text>
+  <text x="92" y="352" class="box-text">model, checkpoint</text>
+  <text x="92" y="372" class="box-text">attack, alpha</text>
+  <text x="92" y="392" class="box-text">perturbations</text>
+
+  <rect x="310" y="170" width="190" height="94" class="node data"/>
+  <text x="332" y="198" class="box-title">Clean Validation Set</text>
+  <text x="332" y="222" class="box-text">data/splits/val.csv</text>
+  <text x="332" y="242" class="box-text">mode = strip</text>
+
+  <rect x="310" y="310" width="190" height="94" class="node data"/>
+  <text x="332" y="338" class="box-title">Poison Validation Set</text>
+  <text x="332" y="362" class="box-text">get_attack()</text>
+  <text x="332" y="382" class="box-text">poison_all = True</text>
+
+  <rect x="310" y="450" width="190" height="94" class="node data"/>
+  <text x="332" y="478" class="box-title">Clean Reference Bank</text>
+  <text x="332" y="502" class="box-text">sample clean images</text>
+  <text x="332" y="522" class="box-text">up to 1000</text>
+
+  <rect x="310" y="610" width="190" height="94" class="node data"/>
+  <text x="332" y="638" class="box-title">Create Loaders</text>
+  <text x="332" y="662" class="box-text">clean loader</text>
+  <text x="332" y="682" class="box-text">poison loader</text>
+
+  <rect x="590" y="170" width="190" height="94" class="node detect"/>
+  <text x="612" y="198" class="box-title">Candidate Image</text>
+  <text x="612" y="222" class="box-text">from clean or poison</text>
+  <text x="612" y="242" class="box-text">validation loader</text>
+
+  <rect x="590" y="310" width="190" height="114" class="node detect"/>
+  <text x="612" y="338" class="box-title">Generate Perturbations</text>
+  <text x="612" y="362" class="box-text">blend candidate with</text>
+  <text x="612" y="382" class="box-text">random clean-bank</text>
+  <text x="612" y="402" class="box-text">images</text>
+
+  <rect x="590" y="470" width="190" height="94" class="node detect"/>
+  <text x="612" y="498" class="box-title">Normalize Batch</text>
+  <text x="612" y="522" class="box-text">channel mean/std</text>
+  <text x="612" y="542" class="box-text">model input format</text>
+
+  <rect x="850" y="300" width="150" height="114" class="node model"/>
+  <text x="872" y="328" class="box-title">Predict</text>
+  <text x="872" y="352" class="box-text">backdoored</text>
+  <text x="872" y="372" class="box-text">checkpoint</text>
+  <text x="872" y="392" class="box-text">softmax</text>
+
+  <rect x="590" y="630" width="190" height="94" class="node detect"/>
+  <text x="612" y="658" class="box-title">Entropy Score</text>
+  <text x="612" y="682" class="box-text">Shannon entropy</text>
+  <text x="612" y="702" class="box-text">low = suspicious</text>
+
+  <rect x="1070" y="190" width="140" height="94" class="node output"/>
+  <text x="1092" y="218" class="box-title">Collect Scores</text>
+  <text x="1092" y="242" class="box-text">clean labels</text>
+  <text x="1092" y="262" class="box-text">poison labels</text>
+
+  <rect x="1070" y="340" width="140" height="94" class="node output"/>
+  <text x="1092" y="368" class="box-title">Threshold</text>
+  <text x="1092" y="392" class="box-text">maximize F1</text>
+  <text x="1092" y="412" class="box-text">score cutoff</text>
+
+  <rect x="1070" y="490" width="140" height="114" class="node output"/>
+  <text x="1092" y="518" class="box-title">Metrics</text>
+  <text x="1092" y="542" class="box-text">precision, recall</text>
+  <text x="1092" y="562" class="box-text">FPR, FNR, AUC</text>
+  <text x="1092" y="582" class="box-text">confusion matrix</text>
+
+  <rect x="1070" y="660" width="140" height="94" class="node output"/>
+  <text x="1092" y="688" class="box-title">Export</text>
+  <text x="1092" y="712" class="box-text">reports/json</text>
+  <text x="1092" y="732" class="box-text">figures / CSV</text>
+
+  <path d="M150 254 L150 300" class="line"/>
+  <path d="M230 357 L310 217" class="line"/>
+  <path d="M230 357 L310 357" class="line"/>
+  <path d="M405 264 L405 310" class="line"/>
+  <path d="M405 404 L405 450" class="line"/>
+  <path d="M405 544 L405 610" class="line"/>
+  <path d="M500 657 L590 217" class="line"/>
+  <path d="M685 264 L685 310" class="line"/>
+  <path d="M500 497 L590 367" class="line"/>
+  <path d="M685 424 L685 470" class="line"/>
+  <path d="M780 517 L850 357" class="line"/>
+  <path d="M1000 357 L1070 237" class="line"/>
+  <path d="M925 414 L685 630" class="line"/>
+  <path d="M780 677 L1070 237" class="line"/>
+  <path d="M1140 284 L1140 340" class="line"/>
+  <path d="M1140 434 L1140 490" class="line"/>
+  <path d="M1140 604 L1140 660" class="line"/>
+
+  <text x="594" y="764" class="label">Decision rule: entropy score below threshold is classified as poisoned.</text>
+</svg>

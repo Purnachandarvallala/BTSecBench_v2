@@ -1,0 +1,15 @@
+{
+    "model": "efficientnet_b0",
+    "attack": "badnets",
+    "target_class": 0,
+    "poison_rate": 1.0,
+    "attack_success_rate": 33.28,
+    "accuracy": 33.28,
+    "precision": 5.56,
+    "recall": 1.85,
+    "f1_score": 2.77,
+    "balanced_accuracy": 33.28,
+    "mcc": 0.0,
+    "samples": 7842,
+    "validation_time": 56.88
+}
