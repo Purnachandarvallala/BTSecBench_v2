@@ -800,7 +800,7 @@ Clone repository
 
 ```bash
 
-git clone https://github.com/<username>/BTSecBench\_v2.git
+git clone https://github.com/purnachandarvallala/BTSecBench\_v2.git
 
 
 
