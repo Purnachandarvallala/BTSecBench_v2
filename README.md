@@ -327,7 +327,7 @@ The framework automatically generates:
 **Clone the repository**
 
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/BTSecBench_v2.git
+git clone https://github.com/purnachandarvallala/BTSecBench_v2.git
 cd BTSecBench_v2
 ```
 
