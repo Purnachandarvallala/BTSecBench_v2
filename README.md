@@ -1,1117 +1,470 @@
-\# BTSecBench\_v2
+# 🚦 BTSecBench_v2
+### A Comprehensive Benchmark Framework for Backdoor Attack Detection and Defense in Traffic Sign Recognition
 
-\## A Comprehensive Benchmark Framework for Backdoor Attack Detection and Defense in Traffic Sign Recognition
+<p align="center">
 
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red?style=for-the-badge&logo=pytorch)
+![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green?style=for-the-badge&logo=opencv)
+![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
+</p>
 
-!\[Python](https://img.shields.io/badge/Python-3.10-blue)
+---
 
-!\[PyTorch](https://img.shields.io/badge/PyTorch-2.x-red)
+## 📌 Project Overview
 
-!\[License](https://img.shields.io/badge/License-MIT-green)
+**BTSecBench_v2** is a comprehensive benchmark framework developed to evaluate the robustness of **Deep Learning-based Traffic Sign Recognition (TSR)** systems against **Backdoor Attacks**.
 
-!\[Status](https://img.shields.io/badge/Status-Completed-success)
+Deep learning-based TSR systems are widely used in Autonomous Vehicles and Advanced Driver Assistance Systems (ADAS). Modern convolutional neural networks achieve excellent classification accuracy, but they remain vulnerable to backdoor attacks — where poisoned samples injected during training cause a model to behave normally on clean images while predicting an attacker-selected target class whenever a hidden trigger appears.
 
+This is a serious security concern because:
 
+- High classification accuracy does **not** guarantee a secure model.
+- Traditional evaluation methods cannot detect hidden backdoors.
+- A compromised TSR model may misclassify critical traffic signs, potentially leading to unsafe driving decisions.
 
-\---
+Unlike conventional image classification projects that focus only on classification accuracy, BTSecBench_v2 integrates:
 
+- 🚀 Multiple Deep Learning Models
+- 🎯 Multiple Backdoor Attacks
+- 🔍 Runtime Detection
+- 🛡 Defense Mechanisms
+- 📊 Automated Benchmarking
+- 📈 Visualization
+- 📑 Report Generation
 
+The framework provides an end-to-end pipeline that evaluates not only how accurate a model is, but also how secure and robust it is against adversarial manipulation — making it a reproducible benchmark for AI security research.
 
-\# Project Overview
+---
 
+## 🎯 Why This Project?
 
+Most existing implementations focus on only one aspect of backdoor security, such as:
 
-BTSecBench\_v2 is a comprehensive benchmark framework developed to evaluate the robustness of Deep Learning based Traffic Sign Recognition (TSR) systems against Backdoor Attacks.
+- A single attack
+- A single defense
+- Classification accuracy only
+- Manual evaluation
+- Limited reporting
 
+There is no unified benchmark that allows researchers to compare multiple attacks, detection methods, defenses, and performance metrics within one reproducible workflow. **BTSecBench_v2 addresses this gap** by integrating all these components into a single benchmark framework.
 
+---
 
-Unlike traditional image classification projects that only measure classification accuracy, BTSecBench\_v2 provides a complete security evaluation pipeline including:
+## 🎯 Objectives
 
+The primary objectives of this project are to:
 
+- Develop a robust Traffic Sign Recognition system.
+- Compare multiple CNN architectures.
+- Implement multiple backdoor attacks.
+- Evaluate Attack Success Rate (ASR).
+- Detect poisoned inputs using STRIP.
+- Defend compromised models using Fine-Tuning.
+- Automatically generate benchmark reports.
+- Provide a reproducible framework for AI Security research.
 
-\- Deep Learning Model Comparison
+---
 
-\- Backdoor Attack Implementation
+## 🏆 Key Contributions
 
-\- Runtime Detection
+- Compared **four** deep learning architectures: Baseline CNN, ResNet18, MobileNetV3, and EfficientNet-B0.
+- Selected **EfficientNet-B0** as the backbone based on its accuracy–efficiency trade-off.
+- Implemented **four** representative backdoor attacks: BadNets, Blend, SIG, and WaNet.
+- Integrated **STRIP** for runtime detection of poisoned inputs.
+- Implemented **Fine-Tuning** as the defense and recovery mechanism.
+- Developed an automated benchmarking system that generates CSV, JSON, and Excel reports, Markdown summaries, and performance figures.
 
-\- Defense Mechanisms
+---
 
-\- Automated Benchmark Generation
-
-\- Visualization
-
-\- Performance Reporting
-
-
-
-The framework is designed for reproducible research in AI Security and Adversarial Machine Learning.
-
-
-
-\---
-
-
-
-\# Objectives
-
-
-
-The main objectives of this project are:
-
-
-
-\- Develop a high-performance Traffic Sign Recognition model.
-
-\- Compare multiple CNN architectures.
-
-\- Implement multiple Backdoor Attacks.
-
-\- Detect poisoned inputs using STRIP.
-
-\- Recover compromised models using Fine-Tuning.
-
-\- Generate automated benchmark reports.
-
-\- Provide reproducible experiments for AI security research.
-
-
-
-\---
-
-
-
-\# Features
-
-
-
-\## Deep Learning Models
-
-
-
-✔ Baseline CNN
-
-
-
-✔ ResNet18
-
-
-
-✔ MobileNetV3
-
-
-
-✔ EfficientNet-B0
-
-
-
-\---
-
-
-
-\## Backdoor Attacks
-
-
-
-Implemented attacks include:
-
-
-
-\- BadNets
-
-\- Blend Attack
-
-\- SIG Attack
-
-\- WaNet
-
-
-
-\---
-
-
-
-\## Detection
-
-
-
-Implemented detection:
-
-
-
-\- STRIP (STRong Intentional Perturbation)
-
-
-
-\---
-
-
-
-\## Defense
-
-
-
-Implemented defense:
-
-
-
-\- Fine-Tuning
-
-
-
-\---
-
-
-
-\## Benchmarking
-
-
-
-Automatically generates:
-
-
-
-\- CSV reports
-
-\- JSON reports
-
-\- Excel reports
-
-\- Markdown reports
-
-\- Performance Figures
-
-
-
-\---
-
-
-
-\# Project Workflow
-
-
+## 🏗 Project Architecture
 
 ```text
-
-GTSRB Dataset
-
-
-
-
-
-       ▼
-
-
-
-Data Preprocessing
-
-
-
-
-
-
-       ▼
-
-
-
-Model Training
-
-
-
-
-
-
-       ▼
-
-
-
-Model Comparison
-
-
-
-
-
-
-       ▼
-
-
-
-EfficientNet-B0
-
-
-
-
-
-
-       ▼
-
-
-
-Backdoor Attack Generation
-
-
-
-
-
-
-       ▼
-
-
-
-BadNets
-
-Blend
-
-SIG
-
-WaNet
-
-
-
-
-
-
-       ▼
-
-
-
-STRIP Detection
-
-
-
-
-
-
-       ▼
-
-
-
-Fine-Tuning Defense
-
-
-
-
-
-
-       ▼
-
-
-
-Benchmark Generation
-
-
-
-
-
-
-       ▼
-
-
-
-Reports
-
-Figures
-
-Metrics
-
+                     GTSRB Dataset
+                           │
+                           ▼
+                  Data Preprocessing
+                           │
+                           ▼
+                Deep Learning Models
+                           │
+     ┌────────────┬──────────────┬──────────────┐
+     ▼            ▼              ▼              ▼
+Baseline CNN   ResNet18   MobileNetV3   EfficientNet-B0
+                           │
+                           ▼
+               Selected Backbone Model
+                           │
+                           ▼
+             Backdoor Attack Generation
+                           │
+     ┌────────────┬────────────┬────────────┬────────────┐
+     ▼            ▼            ▼            ▼
+   BadNets      Blend         SIG         WaNet
+                           │
+                           ▼
+                 STRIP Runtime Detection
+                           │
+                           ▼
+                 Fine-Tuning Defense
+                           │
+                           ▼
+               Benchmark Generation
+                           │
+                           ▼
+      CSV • JSON • Excel • Markdown • Figures
 ```
 
+---
 
+## 🆚 Improvements Over a Conventional TSR Pipeline
 
-\---
+| Conventional TSR | BTSecBench_v2 |
+|---|---|
+| Focuses only on classification accuracy | Evaluates both accuracy and security |
+| Single CNN model | Four CNN architectures compared |
+| No attack evaluation | Four representative backdoor attacks implemented |
+| No runtime detection | STRIP-based detection integrated |
+| No defense mechanism | Fine-Tuning defense implemented |
+| Manual evaluation | Automated benchmark generation |
+| Limited reporting | CSV, JSON, Excel, Markdown, and visualization outputs |
 
+---
 
-
-\# Project Structure
-
-
+## 📂 Project Structure
 
 ```text
-
-BTSecBench\_v2/
-
-
-
+BTSecBench_v2/
 │
-
-
-
-├── analysis/
-
-│
-
-├── attacks/
-
-│
-
-├── configs/
-
-│
-
-├── data/
-
-│
-
-├── datasets/
-
-│
-
-├── defenses/
-
-│
-
-├── evaluation/
-
-│
-
-├── models/
-
-│
-
+├── analysis/            # Benchmark generation and analysis
+├── attacks/             # Backdoor attack implementations
+├── checkpoints/         # Saved trained models
+├── configs/             # Configuration files
+├── dashboard/           # Dashboard/UI components
+├── data/                # Dataset storage
+├── defenses/            # STRIP and Fine-Tuning
+├── docs/                # Documentation
+├── engine/              # Training and inference engine
+├── evaluation/          # Evaluation scripts
+├── explainability/      # Explainability modules
+├── models/              # Deep learning architectures
+├── notebooks/           # Jupyter notebooks
+├── output/              # Generated outputs
 ├── reports/
-
-│
-
-├── trainer/
-
-│
-
-├── utils/
-
-│
-
-├── checkpoints/
-
-│
-
-├── app.py
-
-│
-
-├── benchmark.py
-
-│
-
-├── train.py
-
-│
-
+│   ├── csv/
+│   ├── figures/
+│   ├── json/
+│   └── pdf/
+├── scripts/             # Utility scripts
+├── tests/               # Testing modules
+├── tools/               # Helper tools
+├── tracking/            # Experiment tracking
+├── utils/               # Common utilities
+├── visualization/       # Plot generation
+├── app.py               # Streamlit application
 ├── requirements.txt
-
-│
-
+├── LICENSE
 └── README.md
-
 ```
 
+---
 
+## 📊 Dataset
 
-\---
+**Dataset:** German Traffic Sign Recognition Benchmark (GTSRB)
 
+### Features
 
+- 43 traffic sign classes
+- Real-world traffic sign images
+- Different viewpoints
+- Different lighting conditions
+- Multiple backgrounds
+- Variable image sizes
 
-\# Dataset
+### Preprocessing
 
+- Image resize (224×224)
+- Normalization
+- Data augmentation
+- Train / validation / test split
 
+---
 
-Dataset Used:
-
-
-
-German Traffic Sign Recognition Benchmark (GTSRB)
-
-
-
-Properties:
-
-
-
-\- 43 Traffic Sign Classes
-
-\- Real-world traffic images
-
-\- Different lighting conditions
-
-\- Multiple viewpoints
-
-\- Multiple image sizes
-
-
-
-Preprocessing:
-
-
-
-\- Resize to 224×224
-
-\- Image normalization
-
-\- Data augmentation
-
-\- Train/Validation/Test split
-
-
-
-\---
-
-
-
-\# Deep Learning Models
-
-
+## 🤖 Deep Learning Models
 
 | Model | Purpose |
-
-|---------|----------|
-
-| Baseline CNN | Initial benchmark |
-
-| ResNet18 | Residual learning |
-
-| MobileNetV3 | Lightweight comparison |
-
-| EfficientNet-B0 | Final selected model |
-
-
-
-EfficientNet-B0 was selected due to its excellent trade-off between:
-
-
-
-\- Accuracy
-
-\- Speed
-
-\- Parameters
-
-\- Computational efficiency
-
-
-
-\---
-
-
-
-\# Implemented Backdoor Attacks
-
-
-
-\## BadNets
-
-
-
-\- Visible trigger patch
-
-\- Simple implementation
-
-\- High attack effectiveness
-
-
-
-\---
-
-
-
-\## Blend Attack
-
-
-
-\- Transparent trigger
-
-\- Improved stealth
-
-\- Harder to detect
-
-
-
-\---
-
-
-
-\## SIG Attack
-
-
-
-\- Sinusoidal trigger
-
-\- Global perturbation
-
-\- High stealth
-
-
-
-\---
-
-
-
-\## WaNet
-
-
-
-\- Geometric warping
-
-\- Nearly invisible trigger
-
-\- Advanced attack
-
-
-
-\---
-
-
-
-\# Detection
-
-
-
-Implemented:
-
-
-
-\## STRIP
-
-
-
-Detection Process:
-
-
-
-\- Apply perturbations
-
-\- Multiple predictions
-
-\- Entropy computation
-
-\- Threshold comparison
-
-\- Clean / Suspicious decision
-
-
-
-\---
-
-
-
-\# Defense
-
-
-
-Implemented:
-
-
-
-\## Fine-Tuning
-
-
-
-Defense Pipeline:
-
-
-
-\- Load compromised model
-
-\- Train using clean dataset
-
-\- Reduce trigger influence
-
-\- Preserve clean accuracy
-
-
-
-\---
-
-
-
-\# Evaluation Metrics
-
-
-
-Classification
-
-
-
-\- Accuracy
-
-\- Precision
-
-\- Recall
-
-\- F1 Score
-
-\- MCC
-
-
-
-Security
-
-
-
-\- Attack Success Rate (ASR)
-
-\- Detection Accuracy
-
-\- ROC-AUC
-
-
-
-\---
-
-
-
-\# Results
-
-
-
-The framework successfully:
-
-
-
-✔ Compared multiple CNN models
-
-
-
-✔ Selected EfficientNet-B0
-
-
-
-✔ Implemented four Backdoor Attacks
-
-
-
-✔ Detected attacks using STRIP
-
-
-
-✔ Defended model using Fine-Tuning
-
-
-
-✔ Generated automated benchmark reports
-
-
-
-\---
-
-
-
-\# Generated Outputs
-
-
-
-Reports:
-
-
-
-\- CSV
-
-\- JSON
-
-\- Excel
-
-\- Markdown
-
-
-
-Figures:
-
-
-
-\- Accuracy Comparison
-
-\- Attack Success Rate Comparison
-
-\- STRIP Metrics
-
-\- Benchmark Summary
-
-\- Confusion Matrix
-
-\- ROC Curve
-
-
-
-\---
-
-
-
-\# Example Figures
-
-
-
+|--------|----------|
+| Baseline CNN | Initial performance benchmark |
+| ResNet18 | Residual learning comparison |
+| MobileNetV3 | Lightweight model comparison |
+| ⭐ EfficientNet-B0 | Final selected backbone |
+
+### Why EfficientNet-B0?
+
+- Highest classification accuracy
+- Excellent feature extraction
+- Fewer parameters
+- Better generalization
+- Computationally efficient
+
+---
+
+## ⚔ Implemented Backdoor Attacks
+
+These attacks represent different trigger strategies, ranging from visible patches to highly stealthy geometric transformations.
+
+### ✅ BadNets
+- Visible trigger patch
+- High Attack Success Rate
+- Simple implementation
+
+### ✅ Blend Attack
+- Transparent trigger
+- Improved stealth
+- Harder to detect
+
+### ✅ SIG Attack
+- Global sinusoidal trigger
+- Hidden perturbation
+- High stealth
+
+### ✅ WaNet
+- Geometric warping
+- Nearly invisible trigger
+- Advanced attack strategy
+
+---
+
+## 🔍 Runtime Detection — STRIP
+
+The project integrates **STRIP (STRong Intentional Perturbation)** for runtime backdoor detection.
+
+```text
+Input Image
+      │
+      ▼
+Generate Perturbations
+      │
+      ▼
+Multiple Predictions
+      │
+      ▼
+Entropy Calculation
+      │
+      ▼
+Threshold Comparison
+      │
+      ▼
+Clean / Suspicious
 ```
 
-reports/figures/
+---
 
+## 🛡 Defense Mechanism — Fine-Tuning
 
+Fine-Tuning is used to recover compromised models.
 
-accuracy\_comparison.png
-
-
-
-asr\_comparison.png
-
-
-
-benchmark\_summary.png
-
-
-
-strip\_metrics.png
-
-
-
-strip\_confusion\_matrix.png
-
-
-
-strip\_entropy\_distribution.png
-
-
-
-strip\_roc\_curve.png
-
+```text
+Compromised Model
+      │
+      ▼
+Load Clean Dataset
+      │
+      ▼
+Fine-Tune Model
+      │
+      ▼
+Recovered Model
+      │
+      ▼
+Performance Evaluation
 ```
 
+---
 
+## 📈 Evaluation Metrics
 
-\---
+### Classification Metrics
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Balanced Accuracy
+- Matthews Correlation Coefficient (MCC)
 
+### Security Metrics
+- Attack Success Rate (ASR)
+- STRIP Detection Accuracy
+- ROC-AUC
 
+---
 
-\# Installation
+## 📊 Generated Outputs
 
+The framework automatically generates:
 
+**Reports**
+- CSV
+- JSON
+- Excel
+- Markdown
 
-Clone repository
+**Figures**
+- Accuracy comparison
+- Attack Success Rate comparison
+- STRIP metrics
+- Benchmark summary
+- ROC curve
+- Confusion matrix
+- Entropy distribution
 
+---
 
+## 🚀 Installation
+
+**Clone the repository**
 
 ```bash
-
-git clone https://github.com/purnachandarvallala/BTSecBench\_v2.git
-
-
-
-cd BTSecBench\_v2
-
+git clone https://github.com/<YOUR_USERNAME>/BTSecBench_v2.git
+cd BTSecBench_v2
 ```
 
-
-
-Create environment
-
-
+**Create environment**
 
 ```bash
-
 conda create -n btsecbench python=3.10
-
-
-
 conda activate btsecbench
-
 ```
 
-
-
-Install packages
-
-
+**Install dependencies**
 
 ```bash
-
 pip install -r requirements.txt
-
 ```
 
+---
 
+## ▶️ Usage
 
-\---
-
-
-
-\# Training
-
-
-
-Train model
-
-
-
+**Train model**
 ```bash
-
 python train.py
-
 ```
 
-
-
-\---
-
-
-
-\# Backdoor Attack
-
-
-
-Example
-
-
-
+**Run backdoor attack**
 ```bash
-
 python attacks/badnets.py
-
 ```
 
-
-
-\---
-
-
-
-\# STRIP Detection
-
-
-
+**Run STRIP detection**
 ```bash
-
 python defenses/strip.py
-
 ```
 
-
-
-\---
-
-
-
-\# Fine-Tuning Defense
-
-
-
+**Run Fine-Tuning defense**
 ```bash
-
-python defenses/fine\_tuning.py
-
+python defenses/fine_tuning.py
 ```
 
-
-
-\---
-
-
-
-\# Generate Benchmark
-
-
-
+**Generate benchmark**
 ```bash
-
 python benchmark.py
-
 ```
-
-
-
 or
-
-
-
 ```bash
-
-python -m analysis.final\_benchmark
-
+python -m analysis.final_benchmark
 ```
 
-
-
-\---
-
-
-
-\# Generate Figures
-
-
-
+**Generate visualizations**
 ```bash
-
-python -m analysis.generate\_plots
-
+python -m analysis.generate_plots
 ```
 
+---
 
+## 📈 Results
 
-\---
+The project successfully:
 
+- ✅ Compared four deep learning models.
+- ✅ Selected EfficientNet-B0 as the optimal backbone.
+- ✅ Implemented four representative backdoor attacks.
+- ✅ Evaluated Attack Success Rate (ASR).
+- ✅ Detected poisoned inputs using STRIP.
+- ✅ Recovered the compromised model using Fine-Tuning.
+- ✅ Generated automated benchmark reports and visualizations.
 
+---
 
-\# Technologies Used
+## 💻 Technologies Used
 
+- Python
+- PyTorch
+- TorchVision
+- OpenCV
+- NumPy
+- Pandas
+- Matplotlib
+- Scikit-learn
+- Streamlit
+- Jupyter Notebook
 
+---
 
-\- Python
+## 📚 Applications
 
-\- PyTorch
+- Autonomous Driving
+- Advanced Driver Assistance Systems (ADAS)
+- Traffic Sign Recognition
+- Adversarial Machine Learning
+- AI Security
+- Cybersecurity Research
+- Benchmark Framework Development
 
-\- TorchVision
+---
 
-\- NumPy
+## 🔮 Future Work
 
-\- Pandas
+- Neural Attention Distillation (NAD)
+- Neural Cleanse
+- Fine-Pruning
+- Vision Transformers (ViTs)
+- Physical Trigger Attacks
+- Adaptive STRIP
+- Real-Time Edge AI Deployment
+- Multi-Dataset Benchmarking
 
-\- Matplotlib
+---
 
-\- OpenCV
+## 👨‍💻 Author
 
-\- Scikit-Learn
+**Purnachandar Vallala**
 
-\- Streamlit
-
-
-
-\---
-
-
-
-\# Applications
-
-
-
-\- Autonomous Driving
-
-\- Traffic Sign Recognition
-
-\- AI Security
-
-\- Adversarial Machine Learning
-
-\- Cybersecurity Research
-
-\- Benchmark Frameworks
-
-
-
-\---
-
-
-
-\# Future Improvements
-
-
-
-\- Neural Attention Distillation (NAD)
-
-\- Neural Cleanse
-
-\- Fine-Pruning
-
-\- Vision Transformers
-
-\- Physical Trigger Attacks
-
-\- Adaptive STRIP
-
-\- Real-Time Deployment
-
-
-
-\---
-
-
-
-\# Author
-
-
-
-Purnachandar Vallala
-
-
-
-Master of Science
-
-
-
-Data Science
-
-
+Master of Science in Data Science
 
 Germany
 
+---
 
+## 📄 License
 
-\---
+This project is licensed under the **MIT License**.
 
+---
 
+## 🙏 Acknowledgements
 
-\# License
+- German Traffic Sign Recognition Benchmark (GTSRB)
+- PyTorch
+- TorchVision
+- OpenCV
+- Scikit-learn
+- EfficientNet Authors
+- STRIP Authors
+- BadNets Authors
 
+---
 
-
-This project is released under the MIT License.
-
-
-
-\---
-
-
-
-\# Citation
-
-
-
-If you use this project in your research, please cite:
-
-
-
-```
-
-Purnachandar Vallala
-
-
-
-BTSecBench\_v2:
-
-A Comprehensive Benchmark Framework for Backdoor Attack Detection and Defense in Traffic Sign Recognition.
-
-
-
-2026\.
-
-```
-
-
-
-\---
-
-
-
-\# Acknowledgements
-
-
-
-\- German Traffic Sign Recognition Benchmark (GTSRB)
-
-\- PyTorch
-
-\- TorchVision
-
-\- OpenCV
-
-\- Scikit-Learn
-
-\- EfficientNet Authors
-
-\- STRIP Authors
-
-\- BadNets Authors
-
-
-
-\---
-
-
-
-⭐ If you found this project useful, consider giving it a star.
-
+### ⭐ If you found this project useful, please consider giving it a Star.
